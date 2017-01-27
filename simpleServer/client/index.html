@@ -1,0 +1,33 @@
+<html ng-app="app">
+<head>
+	<title>Friends</title>
+	<script src="angular/angular.js" charset="utf-8"></script>
+	<script src="angular-route/angular-route.js" charset="utf-8"></script>
+	<script src="assets/app.js" charset="utf-8"></script>
+	<script src="assets/factories/friendsFactory.js" charset="utf-8"></script>
+	<script src="assets/controllers/newController.js" charset="utf-8"></script>
+	<script src="assets/controllers/editController.js" charset="utf-8"></script>
+
+
+	<style type="text/css">
+	div{
+		display: inline-block;
+		padding: 10px;
+	}
+	table{
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+	<h1>Welcome! :)</h1>
+
+	<!-- <a href="#!/edit">Edit</a> -->
+	<a href="#!/new">New</a>
+
+<div ng-view>
+</div>
+
+
+</body>
+</html>
