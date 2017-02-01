@@ -61,19 +61,30 @@ var mongoose = require('mongoose'),
 
 		this.changeCompleted = function(req, res){
 			console.log("CHANGE!!!!!!")
-			Item.update({_id: req.params.itemID}, function(err,result){
+			console.log(req.params.itemID)
+			Item.findOne({_id: req.params.itemID}, function(err,result){
 				if(err){
-					console.log(err)
+					console.log("the error", err)
 				}
 				else{
-					if (result.completed ===true) {
-						result.completed = false;
-					} else{
+					console.log("got A Result", result)
+					if (result.completed == false) {
 						result.completed = true;
 						result.save(function(err, updatedItem){
 				         if (err){
 				           console.log(err);
 				         }else{
+				         	console.log("%%%%%%%%%%%%%%%%%%%%", updatedItem)
+				           res.json(updatedItem);
+				         }
+				       })
+					} else{
+						result.completed = false;
+						result.save(function(err, updatedItem){
+				         if (err){
+				           console.log(err);
+				         }else{
+				         	console.log("%%%%%%%%%%%%%%%%%%%%", updatedItem)
 				           res.json(updatedItem);
 				         }
 				       })

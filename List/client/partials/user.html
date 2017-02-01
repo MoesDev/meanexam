@@ -6,7 +6,7 @@
 		<h5>Done</h5>
 		<table>
 			<tr ng-repeat= "i in items" ng-show = iCompleted(i.completed)>
-				<td><input type="checkbox" ng-model="i.completed"></td>
+				<td><input type="checkbox" ng-model="i.completed" disabled></td>
 				<td>{{i._userCreated.name}}  -  </td>
 				<td>{{i.title}}</td>
 				<td>{{i.description}}</td>
@@ -18,7 +18,7 @@
 		<table>
 			<tr ng-repeat= "i in items" ng-hide = iCompleted(i.completed)>
 				<td>
-					<input type="checkbox" ng-model="i.completed" ></td>
+					<input type="checkbox" ng-model="i.completed" disabled></td>
 				<td>{{i._userCreated.name}}  -  </td>
 				<td>{{i.title}}</td>
 				<td>{{i.description}}</td>
