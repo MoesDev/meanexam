@@ -2,7 +2,7 @@ var mongoose = require( 'mongoose' ),
 	fs = require('fs'),
 	path = require('path');
 
-dataBaseMongodb = 'mongodb://localhost/simpleFriend';
+dataBaseMongodb = 'mongodb://localhost/theList';
 
 mongoose.connect(dataBaseMongodb);
 

@@ -1,0 +1,35 @@
+<div>
+	<h2>Welcome {{userName}}</h2>
+
+	<div>
+		<form ng-submit="newItem()">
+			<input type="text" placeholder="Title" ng-model="item.title">
+			<input type="text" placeholder="Description" ng-model="item.description">
+			<select ng-model="item._userAssigned">
+				<option ng-repeat="user in users" value="{{user._id}}">{{user.name}}
+				</option>
+			</select>
+			<input type="submit" value="Add to List">
+		</form>
+	</div>
+
+	<div>
+		<h4>Before I die I want to: </h4>
+		<table>
+			<tr ng-repeat= "i in items">
+				<td><input type="checkbox" ng-model="i.completed" ng-change= "changeCompleted(i._id)"></td>
+				<td>{{i._userAssigned.name}}  -  </td>
+				<td>{{i.title}}</td>
+				<td>{{i.description}}</td>
+				<td>  - {{i.createdAt | date: MM/dd/yyyy}}</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<ul>
+			<li ng-repeat='user in users' ng-hide=hideUser(user.name)> <a href="/#!/users/{{user.name}}">{{user.name}}</a> </li>
+		</ul>
+	</div>
+	
+
+</div>

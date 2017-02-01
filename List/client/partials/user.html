@@ -1,0 +1,28 @@
+<div>
+	<h2>{{userShow.name}}'s Bucket List</h2>
+</div>
+
+<div>
+		<h5>Done</h5>
+		<table>
+			<tr ng-repeat= "i in items" ng-show = iCompleted(i.completed)>
+				<td><input type="checkbox" ng-model="i.completed"></td>
+				<td>{{i._userCreated.name}}  -  </td>
+				<td>{{i.title}}</td>
+				<td>{{i.description}}</td>
+				<td>  - {{i.createdAt | date: MM/dd/yyyy}}</td>
+			</tr>
+		</table>
+
+		<h5>Pending</h5>
+		<table>
+			<tr ng-repeat= "i in items" ng-hide = iCompleted(i.completed)>
+				<td>
+					<input type="checkbox" ng-model="i.completed" ></td>
+				<td>{{i._userCreated.name}}  -  </td>
+				<td>{{i.title}}</td>
+				<td>{{i.description}}</td>
+				<td>  - {{i.createdAt | date: MM/dd/yyyy}}</td>
+			</tr>
+		</table>
+	</div>

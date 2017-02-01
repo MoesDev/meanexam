@@ -1,0 +1,26 @@
+<html ng-app="app">
+<head>
+	<title>Mean Wall</title>
+
+	<script src="angular/angular.js" charset="utf-8"></script>
+	<script src="angular-route/angular-route.js" charset="utf-8"></script>
+	<script src="angular-cookies/angular-cookies.js" charset="utf-8"></script>
+	<script src="assets/app.js" charset="utf-8"></script>
+	<script src="assets/factories/userFactory.js" charset="utf-8"></script>
+	<script src="assets/factories/itemFactory.js" charset="utf-8"></script>
+	<script src="assets/controllers/loginsController.js" charset="utf-8"></script>
+	<script src="assets/controllers/itemsController.js" charset="utf-8"></script>
+	<script src="assets/controllers/usersController.js" charset="utf-8"></script>
+
+</head>
+<body>
+	<div ng-controller="loginsController">
+		<a href="/#!/items">Home</a>
+		<button ng-show='logoutShow()' ng-click="logOut()"> Sign Out </button>
+	</div>
+
+<div ng-view>
+</div>
+
+</body>
+</html>
