@@ -1,5 +1,5 @@
-<div>
-	<h2>Welcome {{userName}}</h2>
+<div id="usersPage">
+	<h2 class="titleName">Welcome {{userName}}</h2>
 
 	<div>
 		<form ng-submit="newItem()">
@@ -15,17 +15,19 @@
 
 	<div>
 		<h4>Before I die I want to: </h4>
-		<table>
+		<table ng-if=exist(items)>
 			<tr ng-repeat= "i in items">
 				<td><input type="checkbox" ng-model="i.completed" ng-change= "changeCompleted(i._id)"></td>
-				<td>{{i._userAssigned.name}}  -  </td>
+				<td ng-if= "i._userAssigned.name != userName">{{i._userAssigned.name}}</td>
+				<td ng-if= "i._userAssigned.name == userName">{{i._userCreated.name}}</td>
 				<td>{{i.title}}</td>
 				<td>{{i.description}}</td>
-				<td>  - {{i.createdAt | date: MM/dd/yyyy}}</td>
+				<td>{{i.createdAt | date: MM/dd/yyyy}}</td>
 			</tr>
 		</table>
 	</div>
 	<div>
+		<h5>Other Users: </h5>
 		<ul>
 			<li ng-repeat='user in users' ng-hide=hideUser(user.name)> <a href="/#!/users/{{user.name}}">{{user.name}}</a> </li>
 		</ul>

@@ -31,7 +31,9 @@ var mongoose = require('mongoose'),
 			// 	};
 			// })
 
-			items = Item.find({_userCreated: req.params.userID}).populate('_userAssigned').exec( function(err,result){
+			items = Item.find().or([{_userAssigned: req.params.userID}, {_userCreated: req.params.userID}])
+				.populate('_userAssigned').populate('_userCreated')
+				.exec( function(err,result){
 				if (err) {
 					console.log(err)
 				} else{
@@ -47,7 +49,7 @@ var mongoose = require('mongoose'),
 					console.log(err)
 				} else{
 					console.log("?????", result)
-					Item.find({_userAssigned: result[0]._id}).populate('_userCreated').exec( function(err,resultItems){
+					Item.find().or([{_userAssigned: result[0]._id}, {_userCreated: result[0]._id}]).populate('_userAssigned').populate('_userCreated').exec( function(err,resultItems){
 						if (err) {
 							console.log(err)
 						} else{

@@ -4,6 +4,7 @@ app.controller('usersController', ['$scope', '$routeParams', 'orderByFilter', '$
 
 // Get all One USER's Info
 
+
 	var getUser = function(){
 		userFactory.getUser($routeParams.name, function(user){
 			console.log("the 1 user page",user)
@@ -29,6 +30,31 @@ getUser();
 			return true;
 		} else{
 			return false;
+		};
+	}
+
+	$scope.doneExist = function(items){
+		var cnt = 0;
+		for (var i = 0; i < items.length; i++) {
+			if ($scope.iCompleted(items[i].completed) == true)
+				cnt =cnt+1;
+		}
+		if (cnt ==0) {
+			return false;
+		} else{
+			return true;
+		};
+	}
+	$scope.pendingExist = function(items){
+		var cnt = 0;
+		for (var i = 0; i < items.length; i++) {
+			if ($scope.iCompleted(items[i].completed) == false)
+				cnt++;
+		}
+		if (cnt ==0) {
+			return false;
+		} else{
+			return true;
 		};
 	}
 

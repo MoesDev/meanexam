@@ -1,6 +1,6 @@
 <html ng-app="app">
 <head>
-	<title>Mean Wall</title>
+	<title>Bucket List</title>
 
 	<script src="angular/angular.js" charset="utf-8"></script>
 	<script src="angular-route/angular-route.js" charset="utf-8"></script>
@@ -11,15 +11,90 @@
 	<script src="assets/controllers/loginsController.js" charset="utf-8"></script>
 	<script src="assets/controllers/itemsController.js" charset="utf-8"></script>
 	<script src="assets/controllers/usersController.js" charset="utf-8"></script>
+	<!-- <script src="assets/photos" charset="utf-8"></script> -->
+
+
+	<style type="text/css">
+		/*#allPages{
+			display: block;
+			width: auto;
+		}*/
+		body{
+			padding: 0px;
+			margin: 0px;
+		}
+		#topBar{
+			background-color: #A6815D;
+			padding: 10px;
+			opacity: .87;
+		}
+			#topBar a, button{
+				background-color: white;
+				opacity: .7;
+				color: #544135;
+				text-decoration: none;
+				padding: 2px 12px;
+				border-radius: 3px;
+				margin-top: 0px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			#topBar button{
+				float: right;
+			}
+		#explainSite{
+			padding: 2px 45px 15px;
+			color: #544135;
+		}
+		#signInPage{
+			background-image: url("assets/photos/tableMap.jpeg");
+			background-size: auto 680px;
+			background-repeat: repeat-x;
+			height: 570px;
+			width: auto;
+			padding: 130px 0px 0px;
+			margin: 0px;
+
+		}
+			#signInBox{
+				color: #544135;
+				text-align: center;
+				background-color: white;
+				opacity: .92;
+				width: 300px;
+				border: 3px solid #544135;
+				display: block;
+				padding:30px;
+				margin: 0px auto;
+			}
+			#signInBox *{
+				opacity: 1;
+			}
+		#otherUsersPage, #usersPage{
+			padding: 10px 35px;
+			color: #674730;
+		}
+		table{
+			border: 2px solid #674730;
+			box-shadow: 4px 5px #674730;
+			padding: 15px 20px;
+		}
+			td{
+				padding: 4px 12px;
+			}
+	</style>
 
 </head>
 <body>
-	<div ng-controller="loginsController">
+	<div ng-controller="loginsController" ng-show='logoutShow()' id="topBar">
 		<a href="/#!/items">Home</a>
-		<button ng-show='logoutShow()' ng-click="logOut()"> Sign Out </button>
+		<button  ng-click="logOut()"> Sign Out </button>
 	</div>
 
 <div ng-view>
+</div>
+<div ng-controller="loginsController" ng-show='!logoutShow()' id="explainSite">
+	<p>Sign in by typing your name or username.  Then create your bucket list. Check things off as you complete them. Add a friend to an item on your list to complete it together. Enjoy life!</p>
 </div>
 
 </body>

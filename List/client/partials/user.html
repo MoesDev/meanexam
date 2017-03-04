@@ -1,13 +1,13 @@
-<div>
+<div id="otherUsersPage">
 	<h2>{{userShow.name}}'s Bucket List</h2>
-</div>
 
 <div>
 		<h5>Done</h5>
-		<table>
+		<table ng-if = doneExist(items)>
 			<tr ng-repeat= "i in items" ng-show = iCompleted(i.completed)>
 				<td><input type="checkbox" ng-model="i.completed" disabled></td>
-				<td>{{i._userCreated.name}}  -  </td>
+				<td ng-if= "i._userCreated.name != userShow.name">{{i._userCreated.name}}  -  </td>
+				<td ng-if= "i._userCreated.name == userShow.name">{{i._userAssigned.name}}  -  </td>
 				<td>{{i.title}}</td>
 				<td>{{i.description}}</td>
 				<td>  - {{i.createdAt | date: MM/dd/yyyy}}</td>
@@ -15,14 +15,16 @@
 		</table>
 
 		<h5>Pending</h5>
-		<table>
-			<tr ng-repeat= "i in items" ng-hide = iCompleted(i.completed)>
+		<table ng-if = pendingExist(items)>
+			<tr ng-repeat= "i in items" ng-hide = iCompleted(i.completed) ng-model="pending">
 				<td>
 					<input type="checkbox" ng-model="i.completed" disabled></td>
-				<td>{{i._userCreated.name}}  -  </td>
+				<td ng-if= "i._userCreated.name != userShow.name">{{i._userCreated.name}}  -  </td>
+				<td ng-if= "i._userCreated.name == userShow.name">{{i._userAssigned.name}}  -  </td>
 				<td>{{i.title}}</td>
 				<td>{{i.description}}</td>
 				<td>  - {{i.createdAt | date: MM/dd/yyyy}}</td>
 			</tr>
 		</table>
 	</div>
+</div>

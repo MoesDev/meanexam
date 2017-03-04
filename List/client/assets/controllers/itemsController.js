@@ -58,11 +58,18 @@ app.controller('itemsController', ['$scope', 'orderByFilter', '$cookies','$locat
 		})
 		getItems();
 	}
+
+	$scope.exist = function(items){
+		var cnt = 0;
+		for (var i = 0; i < items.length; i++) {
+				cnt++;
+		}
+		if (cnt ==0) {
+			return false;
+		} else{
+			return true;
+		};
+	}
 	
-
-
-
-
-
 
 }])
